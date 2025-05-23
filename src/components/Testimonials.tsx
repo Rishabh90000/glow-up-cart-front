@@ -1,7 +1,13 @@
 
 import React from 'react';
 
-const testimonials = [
+interface TestimonialProps {
+  quote: string;
+  author: string;
+  company: string;
+}
+
+const testimonials: TestimonialProps[] = [
   {
     quote: "The packaging solutions provided by PackagePro completely transformed our brand's shelf presence. Our sales increased by 30% after the redesign!",
     author: "Sarah Johnson",

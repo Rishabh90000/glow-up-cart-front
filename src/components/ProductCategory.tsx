@@ -2,6 +2,15 @@
 import React from 'react';
 import { cn } from "@/lib/utils";
 
+interface ProductCategoryProps {
+  title: string;
+  description: string;
+  imageSrc: string;
+  alt: string;
+  reversed?: boolean;
+  id: string;
+}
+
 const ProductCategory = ({ 
   title, 
   description, 
@@ -9,7 +18,7 @@ const ProductCategory = ({
   alt, 
   reversed = false,
   id 
-}) => {
+}: ProductCategoryProps) => {
   return (
     <section id={id} className="section bg-white">
       <div className="container-custom">

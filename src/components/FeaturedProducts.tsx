@@ -1,7 +1,14 @@
 
 import React from 'react';
 
-const products = [
+interface ProductProps {
+  name: string;
+  category: string;
+  image: string;
+  description: string;
+}
+
+const products: ProductProps[] = [
   {
     name: "Elite Series Box",
     category: "Premium Packaging",
