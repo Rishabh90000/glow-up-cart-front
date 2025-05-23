@@ -17,11 +17,11 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="/#products" className="text-sm font-medium transition-colors hover:text-primary">Products</a>
-            <a href="/#boxes" className="text-sm font-medium transition-colors hover:text-primary">Boxes</a>
-            <a href="/#bottles" className="text-sm font-medium transition-colors hover:text-primary">Bottles</a>
-            <a href="/#contact" className="text-sm font-medium transition-colors hover:text-primary">Contact</a>
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <a href="/#products" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">Products</a>
+            <a href="/#boxes" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">Boxes</a>
+            <a href="/#bottles" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">Bottles</a>
+            <a href="/#contact" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">Contact</a>
           </nav>
           
           <div className="flex items-center space-x-4">
@@ -49,44 +49,58 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Menu */}
-      <div className={cn(
-        "md:hidden fixed inset-0 z-50 bg-background pt-16 transition-transform duration-300 ease-in-out",
-        isMenuOpen ? "translate-x-0" : "translate-x-full"
-      )}>
-        <div className="space-y-6 px-4 py-6">
-          <div className="space-y-3">
-            <a 
-              href="/#products" 
-              className="block text-lg font-medium transition-colors hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Products
-            </a>
-            <a 
-              href="/#boxes" 
-              className="block text-lg font-medium transition-colors hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Boxes
-            </a>
-            <a 
-              href="/#bottles" 
-              className="block text-lg font-medium transition-colors hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Bottles
-            </a>
-            <a 
-              href="/#contact" 
-              className="block text-lg font-medium transition-colors hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </a>
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setIsMenuOpen(false)}>
+          <div className="absolute top-0 right-0 w-64 h-full bg-white shadow-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="p-4 border-b">
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-bold text-primary">Menu</span>
+                <button 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="rounded-md p-2 text-gray-900 hover:bg-gray-100"
+                >
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <nav className="p-4">
+              <div className="space-y-4">
+                <a 
+                  href="/#products" 
+                  className="block text-lg font-medium transition-colors hover:text-primary py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Products
+                </a>
+                <a 
+                  href="/#boxes" 
+                  className="block text-lg font-medium transition-colors hover:text-primary py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Boxes
+                </a>
+                <a 
+                  href="/#bottles" 
+                  className="block text-lg font-medium transition-colors hover:text-primary py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Bottles
+                </a>
+                <a 
+                  href="/#contact" 
+                  className="block text-lg font-medium transition-colors hover:text-primary py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contact
+                </a>
+              </div>
+            </nav>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
